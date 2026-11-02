@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rayon Vert Bike Rentals | City bikes, e-bikes and guided tours in Paris</title>
+  <meta name="description" content="Rent a city bike, e-bike, cargo bike or kids bike by the hour or by the day in Paris. Book online in two minutes. Guided tours along the Seine.">
+
+  <!-- ============================================================
+       GOOGLE ANALYTICS 4 (Google tag)
+       1. Create your GA4 property and web data stream.
+       2. Copy your Measurement ID (it looks like G-AB12CD34EF).
+       3. Replace BOTH occurrences of G-XXXXXXXXXX below with it.
+       ============================================================ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XN2GSQGMPT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XN2GSQGMPT');
+  </script>
+  <!-- ============== END GOOGLE ANALYTICS 4 ============== -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #1F4D3A;
+      --green-dark: #143326;
+      --lime: #C8E64C;
+      --sand: #F6F3EC;
+      --white: #FFFFFF;
+      --ink: #1C2321;
+      --muted: #5B6661;
+      --line: #E2DED3;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+    h1, h2 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; line-height: 1.1; }
+    h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 12px; }
+    .kicker { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .lead { color: var(--muted); font-size: 1.1rem; max-width: 620px; }
+    section { padding: 88px 0; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: 1rem; font-family: inherit; transition: transform .15s, background .15s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--lime); color: var(--green-dark); }
+    .btn-dark { background: var(--green); color: var(--white); }
+    .btn-ghost { border-color: rgba(255,255,255,.5); color: var(--white); }
+    .btn-outline { border-color: var(--green); color: var(--green); background: transparent; }
+
+    /* Nav */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(31,77,58,.97); backdrop-filter: blur(6px); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; color: var(--white); }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+    .logo span { color: var(--lime); }
+    .nav ul { display: flex; gap: 28px; list-style: none; }
+    .nav ul a { text-decoration: none; opacity: .85; font-weight: 500; }
+    .nav ul a:hover { opacity: 1; }
+    .nav .btn { padding: 10px 18px; }
+    @media (max-width: 860px) { .nav ul { display: none; } }
+
+    /* Hero */
+    .hero { background: var(--green); color: var(--white); padding: 72px 0 96px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: var(--lime); }
+    .hero p { font-size: 1.15rem; opacity: .9; max-width: 520px; margin-bottom: 32px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 44px; }
+    .stats { display: flex; flex-wrap: wrap; gap: 36px; }
+    .stats strong { display: block; font-size: 1.8rem; font-family: 'DM Serif Display', serif; font-weight: 400; color: var(--lime); }
+    .stats span { font-size: .9rem; opacity: .8; }
+    .hero-art { background: var(--green-dark); border-radius: 50% 50% var(--radius) var(--radius); padding: 40px 24px 24px; }
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .hero-art { max-width: 420px; } }
+
+    /* Steps */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+    .step { background: var(--sand); border-radius: var(--radius); padding: 30px; }
+    .step b { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--green); color: var(--lime); font-size: 1.1rem; margin-bottom: 16px; }
+    .step h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .step p { color: var(--muted); }
+    @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+
+    /* Bikes */
+    .bikes { background: var(--sand); }
+    .bike-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 44px; }
+    .bike { background: var(--white); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; border: 2px solid transparent; }
+    .bike.popular { border-color: var(--green); position: relative; }
+    .bike.popular::before { content: 'Most popular'; position: absolute; top: -13px; left: 24px; background: var(--green); color: var(--lime); font-size: .75rem; font-weight: 700; padding: 3px 12px; border-radius: 999px; }
+    .bike .icon { height: 90px; margin-bottom: 18px; background: var(--sand); border-radius: 12px; display: grid; place-items: center; }
+    .bike h3 { font-size: 1.2rem; }
+    .bike p { color: var(--muted); font-size: .95rem; margin: 6px 0 16px; flex-grow: 1; }
+    .price { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 14px; margin-bottom: 18px; }
+    .price div { font-size: .85rem; color: var(--muted); }
+    .price strong { display: block; font-size: 1.5rem; color: var(--ink); }
+    .bike .btn { justify-content: center; }
+    @media (max-width: 960px) { .bike-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .bike-grid { grid-template-columns: 1fr; } }
+
+    /* Tours */
+    .tour-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+    .tour { border-radius: var(--radius); padding: 34px; color: var(--white); background: var(--green); display: flex; flex-direction: column; gap: 10px; }
+    .tour:nth-child(2) { background: var(--green-dark); }
+    .tour .meta { display: flex; gap: 18px; flex-wrap: wrap; font-size: .9rem; color: var(--lime); font-weight: 700; }
+    .tour h3 { font-size: 1.5rem; }
+    .tour p { opacity: .88; flex-grow: 1; }
+    .tour .btn { align-self: flex-start; margin-top: 8px; }
+    @media (max-width: 760px) { .tour-grid { grid-template-columns: 1fr; } }
+
+    /* Why us */
+    .why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+    .why div { border-top: 3px solid var(--lime); padding-top: 16px; }
+    .why h3 { font-size: 1.05rem; margin-bottom: 4px; }
+    .why p { color: var(--muted); font-size: .95rem; }
+    @media (max-width: 860px) { .why { grid-template-columns: 1fr 1fr; } }
+
+    /* Booking */
+    .booking { background: var(--green); color: var(--white); }
+    .booking .kicker { color: var(--lime); }
+    .booking .lead { color: rgba(255,255,255,.8); }
+    .book-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+    form { background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { font-size: .85rem; font-weight: 700; display: grid; gap: 6px; }
+    label.full { grid-column: 1 / -1; }
+    input, select { font: inherit; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--white); color: var(--ink); }
+    input:focus, select:focus { outline: 2px solid var(--green); border-color: var(--green); }
+    .estimate { grid-column: 1 / -1; background: var(--sand); border-radius: 12px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+    .estimate strong { font-size: 1.6rem; color: var(--green); }
+    form .btn { grid-column: 1 / -1; justify-content: center; }
+    .thanks { display: none; grid-column: 1 / -1; background: #E9F5D0; color: var(--green-dark); border-radius: 12px; padding: 16px; font-weight: 500; }
+    .note { font-size: .8rem; color: var(--muted); grid-column: 1 / -1; }
+    .checks { list-style: none; margin-top: 28px; display: grid; gap: 12px; }
+    .checks li::before { content: '✓'; color: var(--lime); font-weight: 700; margin-right: 10px; }
+    @media (max-width: 860px) { .book-grid { grid-template-columns: 1fr; } form { grid-template-columns: 1fr; } }
+
+    /* FAQ */
+    .faq { max-width: 780px; margin-top: 36px; }
+    details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+    summary { cursor: pointer; font-weight: 700; font-size: 1.08rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    summary::after { content: '+'; color: var(--green); font-size: 1.4rem; line-height: 1; }
+    details[open] summary::after { content: '–'; }
+    details p { color: var(--muted); margin-top: 10px; }
+
+    /* Contact */
+    .contact { background: var(--sand); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: stretch; }
+    .info { display: grid; gap: 22px; margin-top: 28px; }
+    .info b { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--green); }
+    .info a { font-weight: 700; text-decoration: none; }
+    .map { border-radius: var(--radius); overflow: hidden; min-height: 340px; border: 0; width: 100%; height: 100%; }
+    @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    footer { background: var(--green-dark); color: rgba(255,255,255,.75); padding: 36px 0; font-size: .9rem; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    /* Classroom helper: event log, shown only when the URL ends with ?debug=1 */
+    #eventLog { position: fixed; right: 16px; bottom: 16px; width: 320px; max-height: 50vh; overflow: auto; background: #111; color: #9EF29E; font: 12px/1.5 ui-monospace, Menlo, Consolas, monospace; border-radius: 12px; padding: 12px; z-index: 100; display: none; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+    #eventLog h4 { color: #fff; font-family: 'DM Sans', sans-serif; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav">
+    <a href="#top" class="logo" aria-label="Rayon Vert home">
+      <svg width="34" height="34" viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="16" cy="42" r="12" stroke="#C8E64C" stroke-width="5"/><circle cx="48" cy="42" r="12" stroke="#C8E64C" stroke-width="5"/><path d="M16 42 L28 22 L40 42 L48 42 M28 22 L44 22 L48 42 M24 16 L32 16" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Rayon <span>Vert</span>
+    </a>
+    <ul>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#bikes">Bikes &amp; prices</a></li>
+      <li><a href="#tours">Tours</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#book" class="btn btn-primary" data-cta="nav">Book a bike</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker" style="color:var(--lime)">Bicycle rentals in Paris</p>
+        <h1>See the city at the speed of <em>a bike</em>.</h1>
+        <p>City bikes, e-bikes, cargo bikes and kids bikes, by the hour or by the day. Book online in two minutes and pick up your bike near the Seine.</p>
+        <div class="hero-ctas">
+          <a href="#book" class="btn btn-primary" data-cta="hero_book">Book a bike</a>
+          <a href="#bikes" class="btn btn-ghost" data-cta="hero_prices">See prices</a>
+        </div>
+        <div class="stats">
+          <div><strong>from €4</strong><span>per hour</span></div>
+          <div><strong>120</strong><span>bikes in our fleet</span></div>
+          <div><strong>7/7</strong><span>open 9:00–20:00</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 300">
+          <circle cx="330" cy="60" r="28" fill="#C8E64C"/>
+          <path d="M0 250 Q100 220 200 245 T400 240 L400 300 L0 300Z" fill="#1F4D3A"/>
+          <g stroke="#FFFFFF" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="110" cy="200" r="58"/>
+            <circle cx="290" cy="200" r="58"/>
+            <path d="M110 200 L170 110 L245 200 L290 200 M170 110 L265 110 L290 200 M245 200 L170 110"/>
+            <path d="M150 92 L190 92 M265 110 L258 80 L285 74"/>
+          </g>
+          <g stroke="#C8E64C" stroke-width="3" opacity=".7">
+            <line x1="110" y1="142" x2="110" y2="258"/><line x1="52" y1="200" x2="168" y2="200"/>
+            <line x1="290" y1="142" x2="290" y2="258"/><line x1="232" y1="200" x2="348" y2="200"/>
+          </g>
+          <circle cx="245" cy="200" r="10" fill="#C8E64C"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <p class="kicker">How it works</p>
+      <h2>Rolling in three easy steps</h2>
+      <p class="lead">No account to create, no paperwork at the counter. Just pick, book and ride.</p>
+      <div class="steps">
+        <div class="step"><b>1</b><h3>Choose your bike</h3><p>City, electric, cargo or kids: every bike comes with a helmet, a lock and a phone holder.</p></div>
+        <div class="step"><b>2</b><h3>Book online</h3><p>Pick your date and duration. You get an instant confirmation by email, with no payment until pick-up.</p></div>
+        <div class="step"><b>3</b><h3>Pick up and ride</h3><p>Show your confirmation at our shop, adjust your saddle and you are off along the river.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIKES & PRICES -->
+  <section class="bikes" id="bikes">
+    <div class="wrap">
+      <p class="kicker">Bikes &amp; prices</p>
+      <h2>A bike for every ride</h2>
+      <p class="lead">Transparent prices. Insurance, helmet and lock always included.</p>
+      <div class="bike-grid">
+        <article class="bike">
+          <div class="icon"><svg width="80" height="50" viewBox="0 0 80 50" fill="none" stroke="#1F4D3A" stroke-width="3" stroke-linecap="round"><circle cx="18" cy="34" r="13"/><circle cx="62" cy="34" r="13"/><path d="M18 34 L32 14 L50 34 L62 34 M32 14 L56 14 L62 34 M28 9 L37 9"/></svg></div>
+          <h3>City bike</h3>
+          <p>Comfortable 7-speed bike with basket. Ideal for sightseeing.</p>
+          <div class="price"><div><strong>€4</strong>per hour</div><div><strong>€15</strong>per day</div></div>
+          <button class="btn btn-outline" data-bike="city">Choose city bike</button>
+        </article>
+        <article class="bike popular">
+          <div class="icon"><svg width="80" height="50" viewBox="0 0 80 50" fill="none" stroke="#1F4D3A" stroke-width="3" stroke-linecap="round"><circle cx="18" cy="34" r="13"/><circle cx="62" cy="34" r="13"/><path d="M18 34 L32 14 L50 34 L62 34 M32 14 L56 14 L62 34 M28 9 L37 9"/><path d="M38 20 L34 27 L40 27 L36 34" stroke="#E8A400"/></svg></div>
+          <h3>E-bike</h3>
+          <p>Electric assist up to 25 km/h and 80 km range. Hills are no longer a problem.</p>
+          <div class="price"><div><strong>€8</strong>per hour</div><div><strong>€35</strong>per day</div></div>
+          <button class="btn btn-dark" data-bike="ebike">Choose e-bike</button>
+        </article>
+        <article class="bike">
+          <div class="icon"><svg width="80" height="50" viewBox="0 0 80 50" fill="none" stroke="#1F4D3A" stroke-width="3" stroke-linecap="round"><circle cx="14" cy="36" r="10"/><circle cx="66" cy="36" r="10"/><rect x="4" y="12" width="26" height="16" rx="3"/><path d="M30 28 L48 36 L66 36 M48 36 L54 14 M50 10 L58 10"/></svg></div>
+          <h3>Cargo bike</h3>
+          <p>Front box for two children or your shopping, with electric assist.</p>
+          <div class="price"><div><strong>€10</strong>per hour</div><div><strong>€45</strong>per day</div></div>
+          <button class="btn btn-outline" data-bike="cargo">Choose cargo bike</button>
+        </article>
+        <article class="bike">
+          <div class="icon"><svg width="80" height="50" viewBox="0 0 80 50" fill="none" stroke="#1F4D3A" stroke-width="3" stroke-linecap="round"><circle cx="24" cy="36" r="9"/><circle cx="56" cy="36" r="9"/><path d="M24 36 L34 22 L46 36 L56 36 M34 22 L52 22 L56 36 M31 18 L38 18"/></svg></div>
+          <h3>Kids bike</h3>
+          <p>Sizes for ages 4 to 12, with kid-sized helmet. Trailers available.</p>
+          <div class="price"><div><strong>€3</strong>per hour</div><div><strong>€10</strong>per day</div></div>
+          <button class="btn btn-outline" data-bike="kids">Choose kids bike</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOURS -->
+  <section id="tours">
+    <div class="wrap">
+      <p class="kicker">Guided tours</p>
+      <h2>Ride with a local guide</h2>
+      <p class="lead">Small groups of up to 10 riders, bike and helmet included, in English or French.</p>
+      <div class="tour-grid">
+        <article class="tour">
+          <div class="meta"><span>3 hours</span><span>Daily at 10:00</span><span>€39 per person</span></div>
+          <h3>Seine &amp; Monuments</h3>
+          <p>From Notre-Dame to the Eiffel Tower along the river, with stops at the Louvre, the Pont des Arts and the Invalides.</p>
+          <a href="#book" class="btn btn-primary" data-tour="seine_monuments">Book this tour</a>
+        </article>
+        <article class="tour">
+          <div class="meta"><span>2.5 hours</span><span>Fri–Sun at 19:00</span><span>€45 per person</span></div>
+          <h3>Paris by Night</h3>
+          <p>The city lights by e-bike: illuminated bridges, the Champs-Élysées and the sparkling Eiffel Tower at the end.</p>
+          <a href="#book" class="btn btn-primary" data-tour="paris_by_night">Book this tour</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <p class="kicker">Why ride with us</p>
+      <h2>Everything included, nothing to worry about</h2>
+      <div class="why">
+        <div><h3>Serviced daily</h3><p>Every bike is checked by our mechanics before each rental.</p></div>
+        <div><h3>Free cancellation</h3><p>Change or cancel up to 24 hours before pick-up.</p></div>
+        <div><h3>Route maps</h3><p>Free printed and digital maps of the best bike lanes.</p></div>
+        <div><h3>Roadside help</h3><p>A flat tyre? Call us and we come to you within the city.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking" id="book">
+    <div class="wrap book-grid">
+      <div>
+        <p class="kicker">Book online</p>
+        <h2>Reserve your bike</h2>
+        <p class="lead">Send your request and we will confirm availability by email within the hour. You pay at pick-up.</p>
+        <ul class="checks">
+          <li>No payment online</li>
+          <li>Free cancellation up to 24 h before</li>
+          <li>Helmet, lock and insurance included</li>
+        </ul>
+      </div>
+      <form id="bookingForm" novalidate>
+        <label>Full name<input type="text" name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Pick-up date<input type="date" name="date" id="date" required></label>
+        <label>Bike type
+          <select name="bike" id="bike">
+            <option value="city">City bike</option>
+            <option value="ebike">E-bike</option>
+            <option value="cargo">Cargo bike</option>
+            <option value="kids">Kids bike</option>
+            <option value="tour_seine">Tour: Seine &amp; Monuments</option>
+            <option value="tour_night">Tour: Paris by Night</option>
+          </select>
+        </label>
+        <label>Duration
+          <select name="duration" id="duration">
+            <option value="1h">1 hour</option>
+            <option value="2h">2 hours</option>
+            <option value="4h">4 hours</option>
+            <option value="day" selected>Full day</option>
+          </select>
+        </label>
+        <label>Number of bikes / riders<input type="number" name="qty" id="qty" min="1" max="10" value="2"></label>
+        <div class="estimate"><span>Estimated price</span><strong id="estimate">€30</strong></div>
+        <button type="submit" class="btn btn-primary">Send booking request</button>
+        <div class="thanks" id="thanks" role="status">Thank you! Your request has been received. (Demo website: no email is actually sent.)</div>
+        <p class="note">Demo website for teaching. Personal details you type here stay in your browser and are never sent to Google Analytics.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <p class="kicker">FAQ</p>
+      <h2>Questions before you ride</h2>
+      <div class="faq">
+        <details><summary>What do I need to bring?</summary><p>An ID document for the deposit hold. Helmet, lock and phone holder are provided.</p></details>
+        <details><summary>Is there a deposit?</summary><p>Yes: we place a temporary hold of €150 (€500 for e-bikes and cargo bikes) on a bank card, released when you return the bike.</p></details>
+        <details><summary>Can children ride with me?</summary><p>Yes. We have kids bikes from age 4, child seats, trailers and cargo bikes for the little ones.</p></details>
+        <details><summary>What happens if it rains?</summary><p>You can move your booking to another day free of charge, or borrow one of our rain ponchos.</p></details>
+        <details><summary>Can I return the bike later than planned?</summary><p>Yes, extra time is charged at the hourly rate. Just call us so we can keep the bike for you.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="kicker">Find us</p>
+        <h2>Pick up by the river</h2>
+        <div class="info">
+          <div><b>Address</b>Quai de la Tournelle, 75005 Paris</div>
+          <div><b>Opening hours</b>Every day, 9:00–20:00 (April–October)<br>Every day, 10:00–18:00 (November–March)</div>
+          <div><b>Phone</b><a href="tel:+33100000000" data-contact="phone">+33 1 00 00 00 00</a></div>
+          <div><b>Email</b><a href="mailto:hello@example.com" data-contact="email">hello@example.com</a></div>
+          <div><a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&query=Quai+de+la+Tournelle+Paris" target="_blank" rel="noopener" data-contact="directions">Get directions</a></div>
+        </div>
+      </div>
+      <iframe class="map" title="Map of our pick-up point" loading="lazy" src="https://www.google.com/maps?q=Quai+de+la+Tournelle,+Paris&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rayon Vert Bike Rentals</span>
+    <span>Fictional business created for an EMLV SEO and Analytics class.</span>
+  </div>
+</footer>
+
+<div id="eventLog" aria-live="polite"><h4>GA4 events fired</h4><div id="logLines"></div></div>
+
+<script>
+  /* ============================================================
+     GA4 EVENT TRACKING
+     page_view, scroll, outbound clicks and form interactions are
+     collected automatically (Enhanced measurement). The events
+     below add business-specific tracking for the class reports.
+     ============================================================ */
+  const PRICES = {
+    city:  { '1h': 4,  '2h': 8,  '4h': 14, day: 15 },
+    ebike: { '1h': 8,  '2h': 16, '4h': 28, day: 35 },
+    cargo: { '1h': 10, '2h': 20, '4h': 35, day: 45 },
+    kids:  { '1h': 3,  '2h': 6,  '4h': 9,  day: 10 },
+    tour_seine: { '1h': 39, '2h': 39, '4h': 39, day: 39 },
+    tour_night: { '1h': 45, '2h': 45, '4h': 45, day: 45 }
+  };
+  const BIKE_NAMES = { city: 'City bike', ebike: 'E-bike', cargo: 'Cargo bike', kids: 'Kids bike', tour_seine: 'Tour: Seine & Monuments', tour_night: 'Tour: Paris by Night' };
+
+  // Show the event log panel when the URL contains ?debug=1 (useful in class)
+  const DEBUG = new URLSearchParams(location.search).get('debug') === '1';
+  if (DEBUG) document.getElementById('eventLog').style.display = 'block';
+
+  // One helper for every custom event: sends to GA4 and writes to the log panel
+  function track(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params || {});
+    if (DEBUG) {
+      const line = document.createElement('div');
+      line.textContent = '› ' + name + ' ' + JSON.stringify(params || {});
+      document.getElementById('logLines').prepend(line);
+    }
+  }
+
+  // 1. CTA clicks (Book a bike, See prices) -> event: cta_click
+  document.querySelectorAll('[data-cta]').forEach(el =>
+    el.addEventListener('click', () => track('cta_click', { cta_location: el.dataset.cta }))
+  );
+
+  // 2. Choosing a bike -> GA4 recommended e-commerce event: select_item
+  const bikeSelect = document.getElementById('bike');
+  document.querySelectorAll('[data-bike]').forEach(btn =>
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.bike;
+      track('select_item', {
+        item_list_name: 'Bikes and prices',
+        items: [{ item_id: id, item_name: BIKE_NAMES[id], price: PRICES[id].day }]
+      });
+      bikeSelect.value = id;
+      updateEstimate();
+      document.getElementById('book').scrollIntoView({ behavior: 'smooth' });
+    })
+  );
+
+  // 3. Booking a guided tour -> event: select_item (tour)
+  document.querySelectorAll('[data-tour]').forEach(btn =>
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.tour === 'paris_by_night' ? 'tour_night' : 'tour_seine';
+      track('select_item', { item_list_name: 'Guided tours', items: [{ item_id: id, item_name: BIKE_NAMES[id], price: PRICES[id].day }] });
+      bikeSelect.value = id;
+      updateEstimate();
+    })
+  );
+
+  // 4. Contact clicks (phone, email, directions) -> event: contact_click
+  document.querySelectorAll('[data-contact]').forEach(el =>
+    el.addEventListener('click', () => track('contact_click', { contact_method: el.dataset.contact }))
+  );
+
+  // 5. FAQ opened -> event: faq_open
+  document.querySelectorAll('.faq details').forEach(d =>
+    d.addEventListener('toggle', () => { if (d.open) track('faq_open', { faq_question: d.querySelector('summary').textContent }); })
+  );
+
+  // Price estimate
+  const qty = document.getElementById('qty');
+  const duration = document.getElementById('duration');
+  function estimate() {
+    const n = Math.max(1, Math.min(10, parseInt(qty.value, 10) || 1));
+    return PRICES[bikeSelect.value][duration.value] * n;
+  }
+  function updateEstimate() { document.getElementById('estimate').textContent = '€' + estimate(); }
+  [bikeSelect, duration, qty].forEach(el => el.addEventListener('input', updateEstimate));
+  updateEstimate();
+
+  // Minimum date = today
+  const dateInput = document.getElementById('date');
+  dateInput.min = new Date().toISOString().split('T')[0];
+
+  // 6. Booking request -> GA4 recommended event: generate_lead (mark it as a KEY EVENT in GA4)
+  //    Only business data is sent: never name, email or other personal data.
+  document.getElementById('bookingForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const form = e.target;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    track('generate_lead', {
+      value: estimate(),
+      currency: 'EUR',
+      bike_type: bikeSelect.value,
+      rental_duration: duration.value,
+      bike_quantity: parseInt(qty.value, 10) || 1
+    });
+    document.getElementById('thanks').style.display = 'block';
+    form.querySelector('button[type=submit]').disabled = true;
+  });
+</script>
+</body>
+</html>
